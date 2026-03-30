@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaneShift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="noise"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">L</div>
+        <span>LaneShift</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="ghost-button home-button" id="homeButton" type="button">Home</button>
+        <div class="topbar-meta">AI Creator Intelligence</div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero panel" id="landing">
+        <div class="hero-copy">
+          <p class="eyebrow">AI-powered creator positioning</p>
+          <h1>LaneShift</h1>
+          <p class="tagline">Know Your Lane. Shift Smarter.</p>
+          <p class="hero-text">
+            Turn a rough description of your content into a clearer niche, smarter pivot ideas,
+            and a simple growth outlook you can act on right away.
+          </p>
+          <button class="primary-button" id="heroAnalyze">Analyze My Content</button>
+        </div>
+
+        <div class="hero-preview glass-card">
+          <div class="preview-header">
+            <span>Creator Snapshot</span>
+            <span class="status-pill">Live Signals</span>
+          </div>
+          <div class="preview-grid">
+            <article>
+              <p>Current Lane</p>
+              <strong>Tech Education</strong>
+            </article>
+            <article>
+              <p>Trust Score</p>
+              <strong>88%</strong>
+            </article>
+            <article>
+              <p>Overlap</p>
+              <strong>Learners + Early adopters</strong>
+            </article>
+            <article>
+              <p>Pivot</p>
+              <strong>Cybersecurity explainers</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard panel hidden" id="dashboard">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h2>Analyze your current lane</h2>
+          </div>
+          <div class="mini-chip">No database - Simulated AI</div>
+        </div>
+
+        <div class="composer glass-card">
+          <div class="platform-selector-block">
+            <p class="label-eyebrow">Choose Platform</p>
+            <div class="platform-selector" id="platformSelector">
+              <button class="platform-chip active" data-platform="tiktok" type="button">TikTok</button>
+              <button class="platform-chip" data-platform="youtube" type="button">YouTube</button>
+              <button class="platform-chip" data-platform="instagram" type="button">Instagram</button>
+              <button class="platform-chip" data-platform="twitch" type="button">Twitch</button>
+              <button class="platform-chip" data-platform="x" type="button">X</button>
+            </div>
+          </div>
+          <label for="contentInput">Paste a short description of your content</label>
+          <textarea
+            id="contentInput"
+            placeholder="Example: I create short tutorials about AI tools, app workflows, creator tech, and how beginners can use software more effectively."
+          ></textarea>
+          <div class="composer-actions">
+            <p id="analysisHint">Keyword detection will estimate your lane and pivot options.</p>
+            <button class="primary-button" id="analyzeButton">Analyze</button>
+          </div>
+        </div>
+
+        <div class="results-layout" id="resultsArea">
+          <section class="empty-state glass-card" id="emptyState">
+            <p class="eyebrow">Ready to Analyze</p>
+            <h3>Choose a platform and enter your content to see how your growth strategy changes by algorithm.</h3>
+            <p>
+              LaneShift will reshape your lane analysis, platform growth plan, pivot logic, and
+              content recommendations around the creator environment you select.
+            </p>
+          </section>
+
+          <div class="results-content hidden" id="resultsContent">
+          <section class="summary-card glass-card">
+            <div>
+              <p class="eyebrow">Analysis Summary</p>
+              <h3>Your content positioning</h3>
+            </div>
+            <div class="badge-row">
+              <span class="result-badge result-badge-platform" id="platformBadge">Platform: TikTok</span>
+              <span class="result-badge result-badge-lane" id="laneBadge">Lane: -</span>
+              <span class="result-badge result-badge-trust" id="trustBadge">Trust: -</span>
+              <span class="result-badge result-badge-growth" id="growthBadge">Growth: -</span>
+            </div>
+          </section>
+
+          <section class="glass-card switch-preview-section">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Platform Comparison Preview</p>
+                <h3>Compare your current strategy against a new algorithm environment</h3>
+              </div>
+            </div>
+            <div class="platform-selector preview-selector" id="previewPlatformSelector">
+              <button class="platform-chip preview-chip" data-preview-platform="tiktok" type="button">TikTok</button>
+              <button class="platform-chip preview-chip" data-preview-platform="youtube" type="button">YouTube</button>
+              <button class="platform-chip preview-chip" data-preview-platform="instagram" type="button">Instagram</button>
+              <button class="platform-chip preview-chip" data-preview-platform="twitch" type="button">Twitch</button>
+              <button class="platform-chip preview-chip" data-preview-platform="x" type="button">X</button>
+            </div>
+            <div class="preview-empty glass-inset" id="previewEmptyState">
+              Choose a platform to compare your current strategy against a new algorithm environment.
+            </div>
+            <div class="comparison-shell hidden" id="previewCard">
+              <div class="comparison-cards">
+                <div class="comparison-card glass-inset" id="currentComparisonCard">
+                  <div class="card-heading">
+                    <div>
+                      <p class="eyebrow">Current Platform</p>
+                      <h3 id="currentComparePlatformName">Platform: -</h3>
+                    </div>
+                    <span class="result-badge result-badge-platform" id="currentComparePlatformBadge">Platform: -</span>
+                  </div>
+                  <div class="comparison-grid">
+                    <article class="glass-inset">
+                      <p>Growth Potential</p>
+                      <strong id="currentCompareGrowthPotential">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Platform Fit Score</p>
+                      <strong id="currentCompareFitScore">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Best Format</p>
+                      <strong id="currentCompareBestFormat">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Algorithm Personality</p>
+                      <strong id="currentComparePersonality">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Biggest Risk</p>
+                      <strong id="currentCompareRisk">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Best Move Right Now</p>
+                      <strong id="currentCompareBestMove">-</strong>
+                    </article>
+                  </div>
+                </div>
+                <div class="comparison-card glass-inset" id="targetComparisonCard">
+                  <div class="card-heading">
+                    <div>
+                      <p class="eyebrow">Preview Platform</p>
+                      <h3 id="previewPlatformName">Platform: -</h3>
+                    </div>
+                    <span class="result-badge result-badge-platform" id="previewPlatformBadge">Platform: -</span>
+                  </div>
+                  <div class="comparison-grid">
+                    <article class="glass-inset">
+                      <p>Growth Potential</p>
+                      <strong id="previewGrowthPotential">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Platform Fit Score</p>
+                      <strong id="previewFitScore">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Best Format</p>
+                      <strong id="previewBestFormat">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Algorithm Personality</p>
+                      <strong id="previewAlgorithmPersonality">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Biggest Risk</p>
+                      <strong id="previewBiggestRisk">-</strong>
+                    </article>
+                    <article class="glass-inset">
+                      <p>Best Move Right Now</p>
+                      <strong id="previewBestMove">-</strong>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div class="glass-inset comparison-summary" id="comparisonSummary">
+                -
+              </div>
+              <div class="winner-grid">
+                <article class="glass-inset">
+                  <p>Best for Reach</p>
+                  <strong id="winnerReach">-</strong>
+                </article>
+                <article class="glass-inset">
+                  <p>Best for Depth</p>
+                  <strong id="winnerDepth">-</strong>
+                </article>
+                <article class="glass-inset">
+                  <p>Best for Brand Building</p>
+                  <strong id="winnerBrand">-</strong>
+                </article>
+                <article class="glass-inset">
+                  <p>Best for Community</p>
+                  <strong id="winnerCommunity">-</strong>
+                </article>
+                <article class="glass-inset">
+                  <p>Best for Speed</p>
+                  <strong id="winnerSpeed">-</strong>
+                </article>
+              </div>
+              <div class="glass-inset why-card">
+                <p class="list-label">Should you switch?</p>
+                <strong id="switchRecommendation">-</strong>
+              </div>
+              <div class="preview-change-note" id="previewChangeNote">
+                Your strategy would change significantly on this platform.
+              </div>
+            </div>
+          </section>
+
+          <section class="results-grid">
+            <article class="metric-card glass-card">
+              <p>Primary Lane Identified</p>
+              <div class="metric-headline">
+                <strong id="currentLane">-</strong>
+                <span class="mini-badge" id="confidenceBadge">Confidence: -</span>
+              </div>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Primary Audience</p>
+              <strong id="primaryAudience">-</strong>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Secondary Audience</p>
+              <strong id="secondaryAudience">-</strong>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Audience Overlap</p>
+              <strong id="audienceOverlap">-</strong>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Trust Score</p>
+              <strong id="trustScore">-</strong>
+              <span class="metric-subtext" id="trustSubtext">Based on clarity, value, and niche consistency</span>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Growth Potential</p>
+              <strong id="growthPotential">-</strong>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Platform Fit Score</p>
+              <strong id="platformFitScore">-</strong>
+              <span class="metric-subtext">How naturally your current content style fits this platform</span>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Clarity Signal</p>
+              <strong id="claritySignal">-</strong>
+            </article>
+            <article class="metric-card glass-card">
+              <p>Focus Signal</p>
+              <strong id="focusSignal">-</strong>
+            </article>
+          </section>
+
+          <section class="glass-card algorithm-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Algorithm Personality</p>
+                <h3>How this algorithm behaves</h3>
+              </div>
+              <span class="status-pill" id="algorithmPlatformName">TikTok</span>
+            </div>
+            <div class="platform-insight-grid">
+              <article class="glass-inset">
+                <p>Platform personality</p>
+                <strong id="algorithmSummary">-</strong>
+              </article>
+              <article class="glass-inset">
+                <p>Rewards most</p>
+                <strong id="algorithmRewardsMost">-</strong>
+              </article>
+              <article class="glass-inset">
+                <p>Punishes most</p>
+                <strong id="algorithmPunishesMost">-</strong>
+              </article>
+            </div>
+            <div class="glass-inset why-card">
+              <p class="list-label">Best move right now</p>
+              <strong id="algorithmBestMove">-</strong>
+            </div>
+          </section>
+
+          <section class="glass-card platform-insight-card" id="platformInsightCard">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Platform-Aware Insights</p>
+                <h3>How this platform changes the playbook</h3>
+              </div>
+              <span class="status-pill" id="platformInsightBadge">TikTok</span>
+            </div>
+            <div class="platform-insight-grid">
+              <article class="glass-inset">
+                <p>How this platform rewards content</p>
+                <strong id="platformReward">-</strong>
+              </article>
+              <article class="glass-inset">
+                <p>What creators usually get wrong here</p>
+                <strong id="platformMistake">-</strong>
+              </article>
+              <article class="glass-inset">
+                <p>Best growth lever on this platform</p>
+                <strong id="platformLever">-</strong>
+              </article>
+            </div>
+            <div>
+              <p class="list-label">Platform tips</p>
+              <ul class="idea-list" id="platformTips"></ul>
+            </div>
+          </section>
+
+          <section class="glass-card insight-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Pivot Suggestions</p>
+                <h3>Recommended Strategic Pivot</h3>
+              </div>
+              <span class="status-pill" id="difficultyLevel">-</span>
+            </div>
+            <div class="detail-grid">
+              <article>
+                <p>Recommended Pivot</p>
+                <strong id="recommendedPivot">-</strong>
+              </article>
+              <article>
+                <p>Reason</p>
+                <strong id="pivotReason">-</strong>
+              </article>
+              <article>
+                <p>Difficulty</p>
+                <strong id="pivotDifficulty">-</strong>
+              </article>
+              <article>
+                <p>Risk of Pivot</p>
+                <strong id="pivotRisk">-</strong>
+              </article>
+              <article>
+                <p>Best Format Here</p>
+                <strong id="pivotBestFormat">-</strong>
+              </article>
+            </div>
+            <div class="glass-inset why-card">
+              <p class="list-label">Why this works</p>
+              <strong id="whyThisWorks">-</strong>
+            </div>
+            <div>
+              <p class="list-label">Pivot summary</p>
+              <ul class="idea-list" id="pivotIdeas"></ul>
+            </div>
+          </section>
+
+          <section class="glass-card generator-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Content Idea Generator</p>
+                <h3>Five ideas for the pivot lane</h3>
+              </div>
+              <button class="secondary-button" id="generateIdeasButton">Generate Ideas</button>
+            </div>
+            <ul class="idea-list generated-list" id="generatedIdeas"></ul>
+          </section>
+
+          <section class="glass-card prediction-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Performance Prediction</p>
+                <h3>Expected engagement by content type</h3>
+              </div>
+            </div>
+            <div class="prediction-list" id="predictionList"></div>
+          </section>
+
+          <section class="glass-card strategy-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Platform Strategy Summary</p>
+                <h3>How to behave differently here</h3>
+              </div>
+            </div>
+            <p class="strategy-summary" id="strategySummary">
+              -
+            </p>
+          </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
