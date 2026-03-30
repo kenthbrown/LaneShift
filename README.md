@@ -87,10 +87,6 @@ LaneShift solves this by turning a simple content description into:
    - Performance predictions
 5. Optionally previews how strategy changes on other platforms
 
----
 
-## 📸 Demo
-
-*(Add screenshots here — this is IMPORTANT)*
 
 Example:
