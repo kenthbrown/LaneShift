@@ -88,5 +88,4 @@ LaneShift solves this by turning a simple content description into:
 5. Optionally previews how strategy changes on other platforms
 
 
-
 Example:
